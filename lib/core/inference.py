@@ -43,7 +43,9 @@ def get_outputs(
         heatmaps[-1] = heatmaps[-1][:, flip_index, :, :]
         if cfg.MODEL.TAG_PER_JOINT:
             tags[-1] = tags[-1][:, flip_index, :, :]
-        """ what is dataset with center """
+        
+        """ what is dataset with center?  """
+        
     if cfg.DATASET.WITH_CENTER and cfg.TEST.IGNORE_CENTER:
         heatmaps = [hms[:, :-1] for hms in heatmaps]
         tags = [tms[:, :-1] for tms in tags]
@@ -161,7 +163,7 @@ def get_multi_stage_outputs(
             )
             for hms in heatmaps
         ]
-
+        """ what is tags """
         tags = [
             torch.nn.functional.interpolate(
                 tms,
